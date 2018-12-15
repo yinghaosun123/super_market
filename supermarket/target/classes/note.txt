@@ -1,0 +1,34 @@
+一、基础
+1、创建maven项目
+	https://blog.csdn.net/birds_cerebrum/article/details/78954562
+2、创建maven项目完成后解决没有项目结构src/main/java和src/test/java目录的问题
+	并不是没有只是隐藏了，让其显示出来的办法
+	https://blog.csdn.net/xiangwangxiangwang/article/details/78392456
+3、运行maven的web项目的几种方式
+	1、通过按钻过的toncat，这样的话创建的maven项目就被当作了普通的web项目
+	2、使用Maven tomcat:run运行web
+	3、jetty插件运行 
+	https://blog.csdn.net/u012081441/article/details/75204012
+4、解决jsp报红的问题报错信息如下所示
+	Multiple annotations found at this line:
+	- The superclass "javax.servlet.http.HttpServlet" was not found on the Java 
+	 Build Path
+	 https://blog.csdn.net/github_37473774/article/details/71524450
+    因为我们使用的不是tomcat运行环境而是使用的maven中的tomcat插件运行，这个问题不需要解决，另外就是我们的项目是使用的
+    前后端完全分离，也没有创建*.jsp的机会
+5、我们创建好的是maven项目，已经是web项目了，只不过需要修改一些配置，比如java版本什么的
+
+到目前为止就可以通过url地址访问了
+
+二、项目搭建步骤
+	1、pom.xml文件依赖添加
+	2、添加applicationContext.xml
+	3、配置数据库连接池jdbc.properties
+	4、添加日志文件log4j.properties
+	5、配置spring-dao.xml
+	6、配置spring-db.xml
+	7、配置spring-tx.xml
+	8、配置spring-mvc.xml
+	9、修改web.xml
+	
+	

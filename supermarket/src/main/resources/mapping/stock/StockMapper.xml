@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yjw.supermarket.app.stock.dao.StockMapper" >
+  <resultMap id="BaseResultMap" type="com.yjw.supermarket.app.stock.po.Stock" >
+    <id column="stockId" property="stockId" jdbcType="INTEGER" />
+    <result column="productId" property="productId" jdbcType="INTEGER" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="createBy" property="createBy" jdbcType="INTEGER" />
+    <result column="updateBy" property="updateBy" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="del" property="del" jdbcType="CHAR" />
+    <result column="enable" property="enable" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    stockId, productId, count, createBy, updateBy, createTime, updateTime, del, enable
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yjw.supermarket.app.stock.po.StockExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_sm_stock
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="pagination != null and pagination.start != null and pagination.pageSize != null">
+    	limit ${pagination.start} , ${pagination.pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sm_stock
+    where stockId = #{stockId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_sm_stock
+    where stockId = #{stockId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yjw.supermarket.app.stock.po.StockExample" >
+    delete from t_sm_stock
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yjw.supermarket.app.stock.po.Stock" >
+    insert into t_sm_stock (stockId, productId, count, 
+      createBy, updateBy, createTime, 
+      updateTime, del, enable
+      )
+    values (#{stockId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=INTEGER}, #{updateBy,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{del,jdbcType=CHAR}, #{enable,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yjw.supermarket.app.stock.po.Stock" >
+    insert into t_sm_stock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stockId != null" >
+        stockId,
+      </if>
+      <if test="productId != null" >
+        productId,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="createBy != null" >
+        createBy,
+      </if>
+      <if test="updateBy != null" >
+        updateBy,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+      <if test="del != null" >
+        del,
+      </if>
+      <if test="enable != null" >
+        enable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stockId != null" >
+        #{stockId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null" >
+        #{del,jdbcType=CHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yjw.supermarket.app.stock.po.StockExample" resultType="java.lang.Integer" >
+    select count(*) from t_sm_stock
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sm_stock
+    <set >
+      <if test="record.stockId != null" >
+        stockId = #{record.stockId,jdbcType=INTEGER},
+      </if>
+      <if test="record.productId != null" >
+        productId = #{record.productId,jdbcType=INTEGER},
+      </if>
+      <if test="record.count != null" >
+        count = #{record.count,jdbcType=INTEGER},
+      </if>
+      <if test="record.createBy != null" >
+        createBy = #{record.createBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateBy != null" >
+        updateBy = #{record.updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.del != null" >
+        del = #{record.del,jdbcType=CHAR},
+      </if>
+      <if test="record.enable != null" >
+        enable = #{record.enable,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sm_stock
+    set stockId = #{record.stockId,jdbcType=INTEGER},
+      productId = #{record.productId,jdbcType=INTEGER},
+      count = #{record.count,jdbcType=INTEGER},
+      createBy = #{record.createBy,jdbcType=INTEGER},
+      updateBy = #{record.updateBy,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      del = #{record.del,jdbcType=CHAR},
+      enable = #{record.enable,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yjw.supermarket.app.stock.po.Stock" >
+    update t_sm_stock
+    <set >
+      <if test="productId != null" >
+        productId = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        createBy = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="updateBy != null" >
+        updateBy = #{updateBy,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="del != null" >
+        del = #{del,jdbcType=CHAR},
+      </if>
+      <if test="enable != null" >
+        enable = #{enable,jdbcType=CHAR},
+      </if>
+    </set>
+    where stockId = #{stockId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yjw.supermarket.app.stock.po.Stock" >
+    update t_sm_stock
+    set productId = #{productId,jdbcType=INTEGER},
+      count = #{count,jdbcType=INTEGER},
+      createBy = #{createBy,jdbcType=INTEGER},
+      updateBy = #{updateBy,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      del = #{del,jdbcType=CHAR},
+      enable = #{enable,jdbcType=CHAR}
+    where stockId = #{stockId,jdbcType=INTEGER}
+  </update>
+</mapper>
