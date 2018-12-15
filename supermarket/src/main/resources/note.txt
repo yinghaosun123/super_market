@@ -30,5 +30,12 @@
 	7、配置spring-tx.xml
 	8、配置spring-mvc.xml
 	9、修改web.xml
+	10、配置mybatis（可选，不加该配置也可以，我添加这个主要是因为想要打印sql语句 ，如果不是因为这个原因我就我添加这个了）
+三、系统基础建设
+	1、system
+	2、工具类	分页对象、时间格式转换、返回对象、获取上下文对象、字符串处理、随机数生成
+	3、添加异常类	BussinessException、HadlerException
+	4、添加baseController
+	5、添加文件压缩
 	
 	

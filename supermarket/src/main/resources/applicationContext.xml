@@ -14,7 +14,8 @@
     <context:annotation-config />    
         
     <!-- 自动扫描 -->    
-    <context:component-scan base-package="com.yjw.supermarket" />    
-      
-        
+    <context:component-scan base-package="com.yjw.supermarket" /> 
+    
+    <bean id="springApplicationContext" class="com.yjw.supermarket.framework.utils.ApplicationContextHolder"/>   
+    <bean id="applicationContextUtil" class="com.yjw.supermarket.framework.utils.ApplicationContextUtil"/>
 </beans>    

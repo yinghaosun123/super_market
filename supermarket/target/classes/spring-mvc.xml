@@ -53,4 +53,22 @@
         <property name="maxInMemorySize" value="40960" />      
     </bean>     
     
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+			<bean class="com.yjw.supermarket.framework.interceptors.EncodingInterceptor"></bean>    			
+    	</mvc:interceptor>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<bean class="com.yjw.supermarket.framework.interceptors.AuthInterceptor">
+    			<property name="excludeUrls">
+    				<list>
+    					<value>login</value>
+    				</list>
+    			</property>
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
 </beans>    

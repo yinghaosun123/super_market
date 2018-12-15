@@ -22,3 +22,11 @@
 0:0:0:0:0:0:0:1 - - [15/Dec/2018:14:54:53 +0800] "GET /supermarket/stock/list HTTP/1.1" 200 138 http-bio-8080-exec-3 17
 0:0:0:0:0:0:0:1 - - [15/Dec/2018:14:55:05 +0800] "GET /supermarket/stock/list HTTP/1.1" 200 138 http-bio-8080-exec-4 4
 0:0:0:0:0:0:0:1 - - [15/Dec/2018:14:55:26 +0800] "GET /supermarket/stock/detail/1 HTTP/1.1" 200 163 http-bio-8080-exec-5 55
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:20:02 +0800] "GET /supermarket/stock/detail/1 HTTP/1.1" 200 128 http-bio-8080-exec-2 1236
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:20:35 +0800] "GET /supermarket/stock/list HTTP/1.1" 200 100 http-bio-8080-exec-3 89
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:20:49 +0800] "GET /supermarket/user/list HTTP/1.1" 200 270 http-bio-8080-exec-4 207
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:20:55 +0800] "GET /supermarket/user/list HTTP/1.1" 200 270 http-bio-8080-exec-5 14
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:23:14 +0800] "GET /supermarket/user/list HTTP/1.1" 200 270 http-bio-8080-exec-2 1112
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:25:15 +0800] "GET /supermarket/user/list HTTP/1.1" 200 270 http-bio-8080-exec-2 1180
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:27:39 +0800] "GET /supermarket/user/list HTTP/1.1" 200 270 http-bio-8080-exec-2 1163
+0:0:0:0:0:0:0:1 - - [15/Dec/2018:23:28:02 +0800] "GET /supermarket/stock/detail/1 HTTP/1.1" 200 128 http-bio-8080-exec-3 32
